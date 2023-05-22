@@ -19,56 +19,39 @@ void Main()
     SecretQuestion();
 }
 
-void CanadaQuestion()
+// refactoring for less redundancy 
+void AskQuestion(string question, string yesResponse, string noResponse) // we're passing in 3 strings, question, yesResponse, and noResponse
 {
-    bool isTrue = MooseAsks("Is Canada real?");
+    bool isTrue = MooseAsks(question); // if the answer is yes, isTrue will be true, if the answer is no, isTrue will be false
     if (isTrue)
     {
-        MooseSays("Really? It seems very unlikely.");
+        MooseSays(yesResponse);
     }
     else
     {
-        MooseSays("I  K N E W  I T !!!");
+        MooseSays(noResponse);
     }
 }
 
-void EnthusiasticQuestion() 
+void CanadaQuestion()
+{
+    AskQuestion("Is Canada real?", "Really? It seems very unlikely.", "I KNEW IT !!!");
+}
+
+void EnthusiasticQuestion()
+{
+    AskQuestion("Are you enthusiastic?", "Yay!", "You should try it!");
+}
+
+void LoveCSharpQuestion() 
 { 
-    bool isEnthusiastic = MooseAsks("Are you enthusiastic?");
-    if (isEnthusiastic) 
-    {
-        MooseSays("Yay!");
-    } else 
-    {
-        MooseSays("You should try it!");
-    }
+    AskQuestion("Do you love C# yet?", "Good job sucking up to your instructor!", "You will...oh, yes, you will...");
 }
 
-void LoveCSharpQuestion()
-{
-    bool doesLoveCSharp = MooseAsks("Do you love C# yet?");
-    if (doesLoveCSharp)
-    {
-        MooseSays("Good job sucking up to your instructor!");
-    }
-    else
-    {
-        MooseSays("You will...oh, yes, you will...");
-    }
+void SecretQuestion() {
+    AskQuestion("Do you want to know a secret?", "ME TOO!!!! I love secrets...tell me one!", "Oh, no...secrets are the best, I love to share them!");
 }
 
-void SecretQuestion()
-{
-    bool wantsSecret = MooseAsks("Do you want to know a secret?");
-    if (wantsSecret)
-    {
-        MooseSays("ME TOO!!!! I love secrets...tell me one!");
-    }
-    else
-    {
-        MooseSays("Oh, no...secrets are the best, I love to share them!");
-    }
-}
 
 bool MooseAsks(string question) // bool is the return type, MooseAsks is the method name, string question is the parameter. 
 // MooseAsks(the string for 'question' is "Is Canada real?")
